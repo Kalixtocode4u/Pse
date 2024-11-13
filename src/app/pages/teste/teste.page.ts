@@ -16,6 +16,7 @@ export class TestePage implements OnInit {
     //this.adicionaUsuario("test", "teste@email.com", "sagrado")
     //this.updateUsuario(4, 'suscesso', 'parabens@email.com', 'tudocerto');
     //this.exluirUsuario(3);
+    //this.entrarUsuario('filmeDoPele@email.com','hexacampeao')
   }
 
   ngOnInit() {
@@ -77,6 +78,18 @@ export class TestePage implements OnInit {
         console.error('Erro ao excluir usuario')
       }
     );
+  }
+
+  entrarUsuario(email: string, senha: string){
+    const usuario: IUsuario = {nome: '' , email, senha}
+    this.api.loginUsuario(usuario).subscribe(
+      (response) => {
+        console.log('Api response:' + response)
+      },
+      (error) => {
+        console.error('Erro ao obter dados; ' + error)
+      }
+    )
   }
 
   irHome(){

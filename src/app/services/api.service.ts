@@ -16,13 +16,19 @@ export class ApiService {
     return this.http.get<any>(url)
   }
 
-   getUsuarioById(id: number): Observable<any>{
+  getUsuarioById(id: number): Observable<any>{
     const url = 'http://localhost:5000/usuarios?id='+id
     return this.http.get<any>(url)
   }
 
   postUsuario(data: IUsuario): Observable<any>{
     const url = 'http://localhost:5000/usuarios'
+    const headers = new HttpHeaders({'Content-type': 'application/json'})
+    return this.http.post<any>(url, data, {headers})
+  }
+
+  loginUsuario(data: IUsuario): Observable<any>{
+    const url = 'http://localhost:5000/usuarios/login'
     const headers = new HttpHeaders({'Content-type': 'application/json'})
     return this.http.post<any>(url, data, {headers})
   }

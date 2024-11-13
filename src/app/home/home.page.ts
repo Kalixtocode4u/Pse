@@ -14,4 +14,8 @@ export class HomePage {
     this.nav.navigateForward('teste')
   }
 
+  irPainel(){
+    this.nav.navigateForward('painel')
+  }
+
 }
